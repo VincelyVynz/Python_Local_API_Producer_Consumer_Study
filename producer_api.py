@@ -18,6 +18,15 @@ def get_products():
     ]
     return jsonify(products)
 
+@app.route('/tasks')
+def get_tasks():
+    tasks = [
+        {"id": 1, "description": "Fix bug in login flow", "priority": "high"},
+        {"id": 2, "description": "Write unit tests for API", "priority": "medium"},
+        {"id": 3, "description": "Update documentation", "priority": "low"},
+        {"id": 4, "description": "Refactor database models", "priority": "high"},
+    ]
+    return jsonify(tasks)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5000)

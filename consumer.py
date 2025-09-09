@@ -21,5 +21,30 @@ def consumer_products():
     except Exception as e:
         print(e)
 
+def consumer_tasks():
+    try:
+        response = requests.get("http://127.0.0.1:5000/tasks")
+        response.raise_for_status()
+        tasks = response.json()
+        for task in tasks:
+            print(task)
+
+    except Exception as e:
+        print(e)
+
+def high_priority_tasks():
+    try:
+        response = requests.get("http://127.0.0.1:5000/tasks")
+        response.raise_for_status()
+        tasks = response.json()
+        for task in tasks:
+            if task["priority"] == "high":
+                print(task["description"])
+    except Exception as e:
+        print(e)
+
 if __name__ == '__main__':
-    consumer_products()
+    # consumer_numbers()
+    # consumer_products()
+    # consumer_tasks()
+    high_priority_tasks()
